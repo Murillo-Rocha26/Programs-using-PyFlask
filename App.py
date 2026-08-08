@@ -1,9 +1,12 @@
+# Main Flask application entry point, sets up routes and loads initial task data
+
+
 from flask import Flask, request, redirect, render_template
 from Tarefas import tarefas, adicionar_tarefa, completar_tarefa, carregar_dado
 
 app = Flask(__name__)
 print(app.template_folder) 
-@app.route('/')
+@app.route('/') 
 def index():
     tarefas_classificadas = sorted(tarefas, key=lambda t: t['feito'])
     return render_template('index.html', tarefas=tarefas_classificadas)
